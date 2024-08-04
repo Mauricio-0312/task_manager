@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+         <Link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" />
+        {% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+        <div id="header">
+            <h1>Tareas</h1>
+
+            <ul id="menu">
+            {% if app.user %}
+                <li><a href=" {{ path('tasks') }} " >Inicio</a></li>
+                <li><a href=" {{ path('myTasks') }} " >Mis tareas</a></li>
+                <li><a href=" {{ path('tasks_creation') }} " >Crear tarea</a></li>
+
+                <li><a href=" {{ path('logout') }} " >Logout</a></li>
+            {% else %}
+                <li><a href=" {{ path('login') }} " >Login</a></li>
+                <li><a href=" {{ path('register') }} " >Registro</a></li>
+            {% endif %}
+            </ul>
+        </div>
+        {% block body %}
+        
+        {% endblock %}
+    </body>
+</html>
